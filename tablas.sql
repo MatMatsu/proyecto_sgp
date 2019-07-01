@@ -1,0 +1,82 @@
+/* USUARIOS */
+CREATE TABLE Users (
+	legajo INT NOT NULL, /* LEGAJO DE INGRESO DE CADA USUARIO */
+	name VARCHAR(10) NOT NULL UNIQUE, /* NOMBRE DE USUARIO PARA LOGIN */
+	password VARCHAR(10) NOT NULL, /* CONTRASEÑA CON HASH */
+	PRIMARY KEY(legajo)
+);
+
+/* ROLES */
+CREATE TABLE Roles (
+	id_rol INT NOT NULL AUTO_INCREMENT,
+	legajo INT NOT NULL UNIQUE, /* RELACIONA AL USUARIO CON EL ROL EN EL SISTEMA */
+	rol VARCHAR(20) NOT NULL, /* ROL QUE DETERMINA ACCESOS Y USOS */
+	PRIMARY KEY(id_rol),
+	CONSTRAINT FK_legajo FOREIGN KEY(legajo) REFERENCES Users (legajo)
+);
+
+/* PIEZAS - CUANDO SE AGRANDE EL PROYECTO, LAS PIEZAS TENDRAS MAS DATOS */
+CREATE TABLE Piezas (
+	cod_pza VARCHAR(10) NOT NULL, /* CÓDIGO UNICO DE PIEZA */
+	tipo_pza VARCHAR(50) NOT NULL, /* PIEZA DE GOMA, METAL, TELA, GOMA/TELA, GOMA/METAL */
+	/* axo_uno_pza VARCHAR(30), PUEDE POSEER UN AXO O NO */
+	/* axo_dos_pza VARCHAR(30), PUEDE POSEER UN SEGUNDO AXO O NO */
+	/* metal_pza VARCHAR(30), PUEDE LLEVAR O NO METAL */
+	/* tela_pza VARCHAR(30), PUEDE LLEVAR O NO TELA */
+	/* otros_pza VARCHAR(30), PUEDE LLEVAR O NO OTRO MATERIAL */
+	desc_pza VARCHAR(50) NOT NULL, /* DESCRIPCION BREVE */
+	med_pza VARCHAR(30) NOT NULL, /* MEDIDAS  */
+	peso_pza DECIMAL NOT NULL, /**/
+	PRIMARY KEY(cod_pza)
+);
+
+/* STOCK DE PIEZAS */
+CREATE TABLE Stock_Pzas (
+	id_stock INT NOT NULL,
+	cod_pza VARCHAR(10) NOT NULL,
+	cant_stock INT, /* PUEDE HABER O NO EN EL STOCK PERO NUNCA PUEDE SER NEGATIVO */
+	PRIMARY KEY(id_stock),
+	FOREIGN KEY(cod_pza) REFERENCES Piezas (cod_pza)
+);
+
+/* PEDIDO DE PIEZAS - A EVALUAR CON STOCK */
+CREATE TABLE Pedido_Pzas (
+	id_pedido INT NOT NULL,
+	cod_pza VARCHAR(10) NOT NULL,
+	cant_pedido INT NOT NULL, /* SI NO SE PUEDE CUMPLIR CON EL STOCK SE SOLICITA FABRICAR */
+	fecha_pedido DATE NOT NULL,
+	PRIMARY KEY(id_pedido),
+	CONSTRAINT FK_cod_pza FOREIGN KEY(cod_pza) REFERENCES Piezas (cod_pza)
+);
+
+/* DESPACHO DE PIEZAS - RESTA A STOCK DEPOSITO */
+CREATE TABLE Despacho_Pzas (
+	id_despacho INT NOT NULL,
+	id_pedido INT NOT NULL,
+	cant_despacho INT NOT NULL,
+	fecha_despacho DATE NOT NULL,
+	PRIMARY KEY(id_despacho),
+	CONSTRAINT FK_id_pedido FOREIGN KEY(id_pedido) REFERENCES Pedido_Pzas (id_pedido)
+);
+
+/* RECEPCION DE PIEZAS A DEPOSITO - SUMA A STOCK DEPOSITO */
+CREATE TABLE Recepcion_Pzas (
+	id_recepcion INT NOT NULL,
+	cod_pza VARCHAR(10) NOT NULL,
+	cant_recibida INT NOT NULL, /* SI NO SE PUEDE CUMPLIR CON EL STOCK SE SOLICITA FABRICAR */
+	fecha_recepcion DATE NOT NULL,
+	PRIMARY KEY(id_recepcion),
+	FOREIGN KEY(cod_pza) REFERENCES Piezas (cod_pza)
+);
+
+/*
+CREATE TABLE Pedido_Pendiente (
+	id_pendiente INT NOT NULL,
+	id_pedido INT NOT NULL,
+	cant_pendiente INT,
+	fecha_pedido DATE NOT NULL,
+	PRIMARY KEY(id_pendiente),
+	CONSTRAINT FK_id_pedido FOREIGN KEY(id_pedido) REFERENCES Pedido_Pzas (id_pedido),
+	CONSTRAINT FK_fecha_pedido FOREIGN KEY(fecha_pedido) REFERENCES Pedido_Pzas (fecha_pedido)
+);
+*/
