@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/index.css">
 </head>
 <body>
-	<header id="header" class="">
+	<header>
 		<h1>SGP</h1>
 		<h2>Sistema de Gestión de la Producción</h2>
 	</header><!-- /header -->

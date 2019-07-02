@@ -1,0 +1,58 @@
+/* ------------------------------------ */
+/* ---------------HEADER--------------- */
+/* ------------------------------------ */
+header {
+
+}
+
+/* ------------------------------------ */
+/* ----------------MAIN---------------- */
+/* ------------------------------------ */
+h2 {
+	margin-top: calc(1vw + 1vh);
+	font-size: calc(2vw + 2vh);
+	text-align: center;
+	font-style: italic;
+}
+
+/* ------------------------------------ */
+/* ----------------FORM---------------- */
+/* ------------------------------------ */
+.registroUsuario {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 50vw;
+	margin: calc(3vw + 3vh) auto;
+	border: 2px dashed #084D6E;
+	font-size: calc(1vh + 1vw);
+}
+
+.registroUsuario label {
+	display: block;
+	width: 20vw;
+	margin: calc(0.5vh + 0.5vw) auto;
+	text-align: center;
+}
+
+.registroUsuario input{
+	margin: calc(0.5vh + 0.5vw) auto calc(1vh + 1vw);
+	display: block;
+	font-size: calc(1vh + 1vw);
+}
+
+.registroUsuario label[for="legajo"], .registroUsuario label[for="usuario"] {
+	margin-top: calc(1.5vh + 1.5vw);
+}
+
+.registroUsuario label[for="rol"] {
+	width: 50vw;
+}
+
+.registroUsuario select {
+	font-size: calc(1vh + 1vw);
+}
+
+.registroUsuario input[type="submit"] {
+	font-size: calc(1vh + 1vw);
+}

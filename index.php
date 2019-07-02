@@ -1,8 +1,8 @@
 <?php
   session_start();
   if(isset($_SESSION["username"])){
-    header('Location: /sgp/home.php');
+    header('Location: /proyecto_sgp/home.php');
   } else {
-    header('Location: /sgp/login.php');
+    header('Location: /proyecto_sgp/login.php');
   }
 ?>

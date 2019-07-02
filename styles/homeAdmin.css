@@ -1,0 +1,41 @@
+.salir {
+	display: block;
+	text-align: right;
+}
+
+h2 {
+	margin-top: calc(1vw + 1vh);
+	font-size: calc(1.5vw + 1.5vh);
+	text-align: center;
+	font-style: italic;
+}
+
+.tablaUsuarios {
+	width: 50vw;
+	margin: calc(1vw + 1vh) auto;
+	text-align: center;
+	border: 2px dashed #084D6E;
+	font-size: calc(1vh + 1vw);
+}
+
+tbody tr:nth-child(odd) {
+	background-color: rgba(255,255,255,0.1);
+}
+
+tbody tr:nth-child(even), thead tr {
+	background-color: rgba(255,255,255,0.6);
+}
+
+.tablaUsuarios thead {
+	border-bottom: 2px dashed #084D6E;
+	font-weight: bold;
+}
+
+.tablaUsuarios th, .tablaUsuarios td {
+	padding: calc(0.5vh + 0.5vw) 0;
+	border-left: 2px dashed #084D6E;
+}
+
+.tablaUsuarios tbody tr {
+	border-top: 2px dashed #084D6E;
+}

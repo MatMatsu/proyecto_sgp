@@ -54,3 +54,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+header {
+	padding-top: calc(2vw + 2vh);
+}
+h1 {
+	font-size: calc(3vw + 3vh);
+	text-align: center;
+	text-decoration: underline;
+	font-weight: bold;
+}

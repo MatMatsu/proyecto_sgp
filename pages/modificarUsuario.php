@@ -22,8 +22,15 @@
   $rol = $_REQUEST["rol"];
 
   // Encripto la contraseña (no la guardamos tal cual esta, sino que la encriptamos impedir que pueda verse cual es)
-  $hash = password_hash($password, PASSWORD_BCRYPT);
-  
+  if (!password_verify($password, $usuario['password'])) {
+    $hash = password_hash($password, PASSWORD_BCRYPT);
+    $query = "UPDATE users SET name = " . $username . ", password = " . $hash . "WHERE legajo = " . $legajo;
+  } else {
+    $query = "UPDATE users SET name = " . $username . "WHERE legajo = " . $legajo;
+  }
+
+  $resultado = mysqli_query($conexion, $query);
+
   /**  
    * Creo una query para insertar en la tabla usuarios un nuevo
    * registro con los valores de las variables $username y $password
@@ -36,8 +43,7 @@
 
 
   if ($resultado) {
-    $query = "INSERT INTO roles(legajo, rol) 
-      VALUES('" . $legajo . "', '" . $rol . "')";
+    $query = "UPDATE roles SET rol = " . $rol . "WHERE legajo = " . $legajo;
 
     $resultado = mysqli_query($conexion, $query);
     /**
@@ -48,11 +54,11 @@
       * Y luego redirigimos a home
     */
     if($resultado) {
-      $_SESSION["message"] = "Usuario registrado exitosamente";
-      header('Location: /proyecto_sgp/pages/signin.php');
+      $_SESSION["message"] = "Usuario modificado exitosamente";
+      header('Location: /proyecto_sgp/home.php');
     } else {
-      $_SESSION["message"] = "Rol no asignado";
-      header('Location: /proyecto_sgp/pages/signin.php');
+      $_SESSION["message"] = "No se pudo modificar al usuario";
+      header('Location: /proyecto_sgp/home.php');
     }
   } else {
     /**
@@ -62,8 +68,7 @@
      * En ese caso lo que hacemos es guardar en session un mensaje informando tal cosa
      * y redirijo a login
      */
-    $_SESSION["message"] = "Usuario ya existente";
-    header('Location: /proyecto_sgp/pages/signin.php');        
+    $_SESSION["message"] = "No se pudo modificar al usuario";
+    header('Location: /proyecto_sgp/home.php');
   }
-
 ?>

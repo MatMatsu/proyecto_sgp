@@ -1,7 +1,7 @@
 <?php
   // Obtengo el archivo con la conexion a la base de datos
   require("conexion.php");
-  require("password_compat-master/lib/password.php");
+  //require("password_compat-master/lib/password.php");
 
   // Mantengo la sesion abierta
   session_start();
@@ -34,15 +34,21 @@
     // Si coinciden, guardo en sesion los datos del usuario
     $_SESSION["username"] = $username;
     
+    //Obtener el rol del usuario
+    $query = 'SELECT rol FROM roles WHERE legajo LIKE ' . $usuario["legajo"] . ' LIMIT 1';
+    $resultado = mysqli_query($conexion, $query);
+    $usuario = mysqli_fetch_array($resultado);
+    
+    $_SESSION["rol"] = $usuario["rol"];
     // Por las dudas de que haya habido una sesion previa, borramos con unset
     // los datos guardados en la sesion de la comunidad seleccionada previamente
-    $_SESSION["message"] = "";
+    $_SESSION["message"] = $_SESSION["rol"];
     // Redirijo a home
-    header('Location: /sgp/home.php');
+    header('Location: /proyecto_sgp/home.php');
   } else {
     // Si no coinciden, guardo un mensaje en sesion y redirijo a login
-    $_SESSION["message"] = "Usuario o contraseña incorrectos ";
+    $_SESSION["message"] = "Usuario o contraseña incorrectos";
 
-    header('Location: /sgp/login.php');
+    header('Location: /proyecto_sgp/login.php');
   }
 ?>

@@ -2,7 +2,7 @@
   $hostname = "localhost";
   $dbusername = "root";
   $dbpassword = "";
-  $db = "sgp";
+  $db = "db_sgp";
 
   $conexion = mysqli_connect($hostname, $dbusername, $dbpassword, $db);
 

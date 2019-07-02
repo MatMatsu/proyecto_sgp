@@ -5,5 +5,5 @@
   unset($_COOKIE["username"]);
 
   // Redirijo a la pagina de login
-  header('Location: /sgp/login.php');
+  header('Location: /proyecto_sgp/login.php');
 ?>
