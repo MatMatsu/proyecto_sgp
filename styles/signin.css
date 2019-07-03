@@ -5,6 +5,22 @@ header {
 
 }
 
+.salir {
+	text-align: right;
+	position: absolute;
+	top: calc(3vh + 3vw);
+	right: calc(3vh + 3vw);
+	font-weight: bold;
+	text-decoration: none;
+	color: #C81D25;
+}
+
+.youShallNotPass {
+	text-align: center;
+	color: #C81D25;
+	font-size: calc(5vh + 5vw);
+}
+
 /* ------------------------------------ */
 /* ----------------MAIN---------------- */
 /* ------------------------------------ */

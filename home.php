@@ -1,5 +1,5 @@
+<?php include("./pages/verificarLogueo.php") ?>
 <?php
-	session_start();
 	require("./pages/conexion.php");
 ?>
 <!DOCTYPE html>
@@ -28,10 +28,8 @@
 	 ?>
 
 	<main>
-		<?php
-					if($_SESSION["username"] == "admin") {
-		?>
 		<h2>Todos los usuarios:</h2>
+		<?php if($_SESSION["username"] == "admin") { ?>
 		<table class="tablaUsuarios">
 			<thead>
 				<tr>
@@ -55,28 +53,32 @@
 					    			 <td><a href='./pages/modificarUser.php?legajo=". $usuario["legajo"] . "'>M</a></td></tr>";
 					    	}
 				    	}
-				  	}
-				  	if (isset($_SESSION["message"])) {
-				?> 
-				<div class="" role="alert">
-				<?php echo $_SESSION["message"] ?>
-				</div>
-
-				<div class="registrarUsuario">
-					<a href="./pages/registrarUser.php">Registrar nuevo usuario</a>
-				</div>
-				<?php
-					}
-				?>
-				<?php
-					} else {
-				  		echo "NECESITA SER ADMIN PARA INGRESAR AQUÍ";
 				?>
 			</tbody>
 		</table>
+		<?php 
+				}
+		?>
+		<div class="contenedor">
+			<div class="registrarUsuario">
+				<a href="./pages/registrarUser.php">REGISTRAR NUEVO USUARIO</a>
+			</div>
+		</div>
 		<?php
-		  }
-		?>		
+			} else {
+			 	echo "<p class='youShallNotPass'>NECESITA SER ADMIN PARA INGRESAR AQUÍ</p>";
+			}
+		?>
+		<?php
+			if (isset($_SESSION["message"])) {
+		?> 
+		<div class="" role="alert">
+			<?php echo $_SESSION["message"] ?>
+		</div>
+		
+		<?php
+			}
+		?>				
 	</main>
 </body>
 </html>

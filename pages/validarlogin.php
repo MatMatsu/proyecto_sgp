@@ -21,7 +21,7 @@
    * WHERE username LIKE $username    restrinjo la busqueda al registro cuyo columna
    * username tenga el valor de la variable $username
    */ 
-  $query = 'SELECT * FROM users WHERE name LIKE "' . $username . '" LIMIT 1';
+  $query = 'SELECT * FROM users WHERE name = "' . $username . '" LIMIT 1';
   
   // Ejecuto la query y la guardo en la variable $resultado
   $resultado = mysqli_query($conexion, $query);
@@ -40,6 +40,7 @@
     $usuario = mysqli_fetch_array($resultado);
     
     $_SESSION["rol"] = $usuario["rol"];
+    unset($_SESSION["message"]);
     // Por las dudas de que haya habido una sesion previa, borramos con unset
     // los datos guardados en la sesion de la comunidad seleccionada previamente
     // Redirijo a home

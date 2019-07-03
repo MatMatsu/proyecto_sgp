@@ -1,6 +1,5 @@
+<?php include("./verificarLogueo.php") ?>
 <?php
-	session_start();
-
 	require("conexion.php");
 
 	$query = 'SELECT users.legajo, users.name, users.password, roles.rol FROM users INNER JOIN roles on users.legajo = roles.legajo WHERE users.legajo = ' . $_GET["legajo"];
@@ -23,6 +22,7 @@
 	</header>
 	<main>
 		<h2>Registrar usuario nuevo:</h2>
+		<?php if($_SESSION["username"] == "admin") { ?>
 		<form action="modificarUsuario.php" method="post" id="formRegistro" class="registroUsuario">
 			<label for="legajo">Legajo<input type="number" max="999" name="legajo" autofocus="true" value=<?php echo $usuario["legajo"]; ?> ></label>
 			<label for="usuario">Usuario<input type="text" maxlength="10" name="usuario" value=<?php echo "'" . $usuario["name"] . "'"; ?> ></label>
@@ -41,6 +41,7 @@
 			</label>
 			<input type="submit" value="Modificar">
 		</form>
+		<?php } ?>
 	</main>
 </body>
 </html>

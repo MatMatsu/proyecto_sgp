@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php include("./verificarLogueo.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +10,13 @@
 <body>
 	<header>
 		<h1>SGP</h1>
+		<a href="/proyecto_sgp/pages/logout.php" class="salir">LOGOUT</a>
 	</header>
 	<main>
 		<h2>Registrar usuario nuevo:</h2>
+		<?php
+			if($_SESSION["username"] == "admin") {
+		?>
 		<form action="registrarUsuario.php" method="post" id="formRegistro" class="registroUsuario">
 			<label for="legajo">Legajo<input type="number" max="999" name="legajo" autofocus="true"></label>
 			<label for="usuario">Usuario<input type="text" maxlength="10" name="usuario"></label>
@@ -31,6 +35,11 @@
 			</label>
 			<input type="submit">
 		</form>
+		<?php 
+			} else {
+			 	echo "<p class='youShallNotPass'>NECESITA SER ADMIN PARA INGRESAR AQUÍ</p>";
+			}
+		?>
 		<?php 
       if (isset($_SESSION["message"])) {?> 
       <div class="" role="alert">
