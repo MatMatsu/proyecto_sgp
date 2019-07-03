@@ -1,7 +1,7 @@
 <?php
   // Obtengo el archivo con la conexion a la base de datos
   require("conexion.php");
-  //require("password_compat-master/lib/password.php");
+  require("password_compat-master/lib/password.php");
 
   // Mantengo la sesion abierta
   session_start();
@@ -42,7 +42,6 @@
     $_SESSION["rol"] = $usuario["rol"];
     // Por las dudas de que haya habido una sesion previa, borramos con unset
     // los datos guardados en la sesion de la comunidad seleccionada previamente
-    $_SESSION["message"] = $_SESSION["rol"];
     // Redirijo a home
     header('Location: /proyecto_sgp/home.php');
   } else {

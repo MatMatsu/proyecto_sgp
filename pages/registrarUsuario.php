@@ -2,7 +2,7 @@
   // Obtengo el archivo con la conexion a la base de datos
   require("conexion.php");
   //PARA PODER USAR HASH EN UN PHP MAS VIEJO
-  //require("password_compat-master/lib/password.php");
+  require("password_compat-master/lib/password.php");
 
   // Mantengo la sesion abierta
   session_start();

@@ -36,6 +36,7 @@
 					<option value="produccion" <?php if($usuario["rol"] == "produccion") echo 'selected="selected"'; ?> >Producción</option>
 					<option value="matriceria" <?php if($usuario["rol"] == "matriceria") echo 'selected="selected"'; ?> >Matriceria</option>
 					<option value="mezclado" <?php if($usuario["rol"] == "mezclado") echo 'selected="selected"'; ?> >Mezclado</option>
+					<option value="laboratorio" <?php if($usuario["rol"] == "laboratorio") echo 'selected="selected"'; ?> >Laboratorio</option>
 				</select>
 			</label>
 			<input type="submit" value="Modificar">

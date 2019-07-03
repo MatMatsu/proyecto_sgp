@@ -12,11 +12,8 @@
 </head>
 <body>
 	<header>
-		<a href="pages/logout.php" class="salir">logout</a>
 		<h1>SGP</h1>
-		<nav>
-			
-		</nav>
+		<a href="pages/logout.php" class="salir">LOGOUT</a>
 	</header>
 	<?php 
 		//CON REQUIRE MOSTRAR SEGUN EL ROL DEL USUARIO, LA PANTALLA CORRECTA
@@ -47,25 +44,39 @@
 			</thead>
 			<tbody>
 				<?php
-						$query = 'SELECT users.legajo, users.name, roles.rol FROM users INNER JOIN roles on users.legajo = roles.legajo';
+						$query = 'SELECT users.legajo, users.name, roles.rol FROM users INNER JOIN roles on users.legajo = roles.legajo ORDER BY users.legajo ASC';
 				    if($resultado = mysqli_query($conexion, $query)) {
 				    	while($usuario = mysqli_fetch_assoc($resultado)){
-				    		echo "<tr><td>" . $usuario["legajo"] . "</td>" .
+				    		if($usuario["rol"] != "admin") {
+				    			echo "<tr><td>" . $usuario["legajo"] . "</td>" .
 					    			 "<td>" . $usuario["name"] . "</td>" .
 					    			 "<td>" . $usuario["rol"] . "</td>" .
-					    			 "<td><a href='./pages/eliminarUser.php?legajo=". $usuario["legajo"] . "'>X</a></td>
+					    			 "<td><a href='./pages/eliminarUsuario.php?legajo=". $usuario["legajo"] . "'>X</a></td>
 					    			 <td><a href='./pages/modificarUser.php?legajo=". $usuario["legajo"] . "'>M</a></td></tr>";
+					    	}
 				    	}
 				  	}
-				  } else {
+				  	if (isset($_SESSION["message"])) {
+				?> 
+				<div class="" role="alert">
+				<?php echo $_SESSION["message"] ?>
+				</div>
+
+				<div class="registrarUsuario">
+					<a href="./pages/registrarUser.php">Registrar nuevo usuario</a>
+				</div>
+				<?php
+					}
 				?>
-				
+				<?php
+					} else {
+				  		echo "NECESITA SER ADMIN PARA INGRESAR AQUÍ";
+				?>
 			</tbody>
 		</table>
 		<?php
-				include("./pages/exito.php");
 		  }
-		?>
+		?>		
 	</main>
 </body>
 </html>

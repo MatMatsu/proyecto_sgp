@@ -2,7 +2,7 @@
   // Obtengo el archivo con la conexion a la base de datos
   require("conexion.php");
   //PARA PODER USAR HASH EN UN PHP MAS VIEJO
-  //require("password_compat-master/lib/password.php");
+  require("password_compat-master/lib/password.php");
 
   // Mantengo la sesion abierta
   session_start();
@@ -21,29 +21,22 @@
   $password = $_REQUEST["password"];
   $rol = $_REQUEST["rol"];
 
+  $query = 'SELECT * FROM users WHERE name LIKE "' . $username . '" LIMIT 1';
+  $resultado = mysqli_query($conexion, $query);
+  $usuario = mysqli_fetch_array($resultado);
+
   // Encripto la contraseña (no la guardamos tal cual esta, sino que la encriptamos impedir que pueda verse cual es)
-  if (!password_verify($password, $usuario['password'])) {
+  if ($password != $usuario['password']) {
     $hash = password_hash($password, PASSWORD_BCRYPT);
     $query = "UPDATE users SET name = " . $username . ", password = " . $hash . "WHERE legajo = " . $legajo;
   } else {
-    $query = "UPDATE users SET name = " . $username . "WHERE legajo = " . $legajo;
+    $query = "UPDATE users SET name = '" . $username . "' WHERE legajo = " . $legajo;
   }
 
   $resultado = mysqli_query($conexion, $query);
 
-  /**  
-   * Creo una query para insertar en la tabla usuarios un nuevo
-   * registro con los valores de las variables $username y $password
-   */ 
-  $query = "INSERT INTO users(legajo, name, password) 
-    VALUES('" . $legajo . "', '" . $username . "', '" . $hash . "')";
-
-  // Ejecuto la query y guardo el resultado en la variable $resultado
-  $resultado = mysqli_query($conexion, $query);
-
-
   if ($resultado) {
-    $query = "UPDATE roles SET rol = " . $rol . "WHERE legajo = " . $legajo;
+    $query = "UPDATE roles SET rol = '" . $rol . "' WHERE legajo = " . $legajo;
 
     $resultado = mysqli_query($conexion, $query);
     /**
@@ -57,6 +50,7 @@
       $_SESSION["message"] = "Usuario modificado exitosamente";
       header('Location: /proyecto_sgp/home.php');
     } else {
+      echo "HOLA";
       $_SESSION["message"] = "No se pudo modificar al usuario";
       header('Location: /proyecto_sgp/home.php');
     }
@@ -68,6 +62,7 @@
      * En ese caso lo que hacemos es guardar en session un mensaje informando tal cosa
      * y redirijo a login
      */
+    echo "CHAU";
     $_SESSION["message"] = "No se pudo modificar al usuario";
     header('Location: /proyecto_sgp/home.php');
   }

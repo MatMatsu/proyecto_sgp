@@ -1,6 +1,11 @@
 .salir {
-	display: block;
 	text-align: right;
+	position: absolute;
+	top: calc(3vh + 3vw);
+	right: calc(3vh + 3vw);
+	font-weight: bold;
+	text-decoration: none;
+	color: #C81D25;
 }
 
 h2 {
@@ -38,4 +43,10 @@ tbody tr:nth-child(even), thead tr {
 
 .tablaUsuarios tbody tr {
 	border-top: 2px dashed #084D6E;
+}
+
+.registrarUsuario {
+	border: 1px solid black;
+	background-color: white;
+	display: inline-block;
 }
