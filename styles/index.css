@@ -1,34 +1,21 @@
 /* ------------------------------------ */
-/* ---------------HEADER--------------- */
-/* ------------------------------------ */
-h2 {
-	margin-top: calc(1vw + 1vh);
-	font-size: calc(2vw + 2vh);
-	text-align: center;
-	font-style: italic;
-}
-
-/* ------------------------------------ */
 /* ----------------MAIN---------------- */
 /* ------------------------------------ */
 .logueo {
-	min-width: 200px;
-	width: calc(10vw + 10vh);
 	margin: calc(3vw + 3vh) auto;
 	border: 2px dashed #084D6E;
+	
+	padding: calc(1.5vh + 1.5vw);
 }
 
 .logueo label {
 	display: block;
-	margin: calc(1vh + 1vw) auto;
+	margin: auto;
+	margin-bottom: calc(1.5vh + 1.5vw);
 	text-align: center;
 }
 
 .logueo input{
 	margin: calc(0.5vh + 0.5vw) auto calc(1vh + 1vw);
 	display: block;
-}
-
-.logueo input[type="submit"] {
-	font-size: calc(1vh + 1vw);
 }

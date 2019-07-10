@@ -1,7 +1,7 @@
 <?php
   // Obtengo el archivo con la conexion a la base de datos
   require("conexion.php");
-  require("password_compat-master/lib/password.php");
+  //require("password_compat-master/lib/password.php");
 
   // Mantengo la sesion abierta
   session_start();
@@ -44,11 +44,11 @@
     // Por las dudas de que haya habido una sesion previa, borramos con unset
     // los datos guardados en la sesion de la comunidad seleccionada previamente
     // Redirijo a home
-    header('Location: /proyecto_sgp/home.php');
+    header('Location: /proyecto_sgp/pages/home.php');
   } else {
     // Si no coinciden, guardo un mensaje en sesion y redirijo a login
     $_SESSION["message"] = "Usuario o contraseña incorrectos";
 
-    header('Location: /proyecto_sgp/login.php');
+    header('Location: /proyecto_sgp/pages/login.php');
   }
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2019 a las 02:45:03
--- Versión del servidor: 10.3.15-MariaDB
--- Versión de PHP: 7.3.6
+-- Tiempo de generación: 10-07-2019 a las 02:09:54
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -62,6 +62,21 @@ CREATE TABLE `piezas` (
   `peso_pza` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `piezas`
+--
+
+INSERT INTO `piezas` (`cod_pza`, `tipo_pza`, `desc_pza`, `med_pza`, `peso_pza`) VALUES
+('0001/01', 'Goma', 'Copa base', '10 x 15', '150'),
+('0001/02', 'Goma', 'Copa intermedia', '15 x 15', '150'),
+('0001/03', 'Goma', 'Copa Juego 1 base + 4 intermedias', '10 x 15', '750'),
+('0004/01', 'Metal', 'Bomba', '110 x 120 x 10', '1234'),
+('0009/01', 'goma', 'Diafragma', '150 x 120 x 100', '150'),
+('0009/02', 'goma', 'Diafragma', '150 x 120 x 100', '150'),
+('1234/01', 'Goma', 'O\'ring', '10 x 10 x 10', '15'),
+('1234/02', 'Metal', 'O\'ring', '10 x 10 x 10', '30'),
+('2345/01', 'Goma', 'Valvula', '10 x 10', '25');
+
 -- --------------------------------------------------------
 
 --
@@ -94,10 +109,11 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id_rol`, `legajo`, `rol`) VALUES
 (1, 1, 'admin'),
 (5, 140, 'mezclado'),
-(6, 90, 'deposito'),
+(6, 90, 'laboratorio'),
 (7, 123, 'produccion'),
 (8, 124, 'matriceria'),
-(9, 135, 'matriceria');
+(9, 135, 'gerente'),
+(10, 2, 'gerente');
 
 -- --------------------------------------------------------
 
@@ -129,6 +145,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`legajo`, `name`, `password`) VALUES
 (1, 'admin', '$2y$10$fmDCbyGlECWeoLDKgNKxKedImMeEQmY9n.TglzVNY6CTyCGmy/TDC'),
+(2, 'gerente', '$2y$10$lh11J.yq33SMuz5b7i2dEOcNm7QMhmC7S0y8cFTD8JPf5fj01nKBG'),
 (90, 'Pepe', '$2y$10$O.s3KcQ7QrVTPTo2NlOciOP6P4Te./.aqBP3ojOGN5rVOp05ZyeOG'),
 (123, 'Pipi', '$2y$10$dRWfaaFzHqcB6q3CtynfCudc4/rNq7bzXIe.2aalt8Jaz97v9APJW'),
 (124, 'Popo', '$2y$10$9QNz1gdpywAVy8OvtwGSquxN4DR1JZwZf7jTGK9bjB52E7adyTgUK'),
@@ -195,7 +212,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -223,7 +240,7 @@ ALTER TABLE `recepcion_pzas`
 -- Filtros para la tabla `roles`
 --
 ALTER TABLE `roles`
-  ADD CONSTRAINT `FK_legajo` FOREIGN KEY (`legajo`) REFERENCES `users` (`legajo`);
+  ADD CONSTRAINT `FK_legajo` FOREIGN KEY (`legajo`) REFERENCES `users` (`legajo`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `stock_pzas`

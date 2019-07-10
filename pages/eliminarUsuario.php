@@ -20,12 +20,13 @@
 
     $query = 'DELETE FROM users WHERE legajo = ' . $legajo;
     $resultado = mysqli_query($conexion, $query);
+    
     if ($resultado) {
       $_SESSION["message"] = "Usuario eliminado exitosamente";
-      header('Location: /proyecto_sgp/home.php');
+      header('Location: /proyecto_sgp/pages/home.php');
     } else {
       $_SESSION["message"] = "No se pudo eliminar al usuario";
-      header('Location: /proyecto_sgp/home.php');
+      header('Location: /proyecto_sgp/pages/home.php');
     }
   }
 ?>

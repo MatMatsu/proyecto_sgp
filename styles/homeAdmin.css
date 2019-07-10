@@ -1,75 +1,113 @@
-.salir {
-	text-align: right;
-	position: absolute;
-	top: calc(3vh + 3vw);
-	right: calc(3vh + 3vw);
-	font-weight: bold;
-	text-decoration: none;
-	color: #C81D25;
-}
-
+/* ------------------------------------ */
+/* --------INGRESO NO DESEADO---------- */
+/* ------------------------------------ */
 .youShallNotPass {
 	text-align: center;
 	color: #C81D25;
-	font-size: calc(5vh + 5vw);
+	font-size: calc(3vh + 3vw);
 }
 
-h2 {
-	margin-top: calc(1vw + 1vh);
-	font-size: calc(1.5vw + 1.5vh);
-	text-align: center;
-	font-style: italic;
-}
+/* ------------------------------------ */
+/* -----------TABLA USUARIOS----------- */
+/* ------------------------------------ */
 
+/* MAIN > TABLE(.TABLAUSUARIOS) */
 .tablaUsuarios {
-	width: 50vw;
 	margin: calc(1vw + 1vh) auto;
 	text-align: center;
 	border: 2px dashed #084D6E;
-	font-size: calc(1vh + 1vw);
+	max-width: 90vw;
 }
 
-tbody tr:nth-child(odd) {
-	background-color: rgba(255,255,255,0.1);
-}
-
-tbody tr:nth-child(even), thead tr {
-	background-color: rgba(255,255,255,0.6);
-}
-
+/* MAIN > TABLE(.TABLAUSUARIOS) >THEAD */
 .tablaUsuarios thead {
 	border-bottom: 2px dashed #084D6E;
 	font-weight: bold;
 }
 
-.tablaUsuarios th, .tablaUsuarios td {
-	padding: calc(0.5vh + 0.5vw) 0;
-	border-left: 2px dashed #084D6E;
+/* MAIN > TABLE(.TABLAUSUARIOS) > TBODY */
+tbody tr:nth-child(odd) {
+	background-color: white;
 }
 
+tbody tr:nth-child(even), thead tr {
+	background-color: #DDD;
+}
+
+/* MAIN > TABLE(.TABLAUSUARIOS) > TBODY > TR */
 .tablaUsuarios tbody tr {
 	border-top: 2px dashed #084D6E;
 }
 
+/* MAIN > TABLE(.TABLAUSUARIOS) > THEAD>TH/TBODY>TD */
+.tablaUsuarios th, .tablaUsuarios td {
+	vertical-align: middle;
+	border-left: 2px dashed #084D6E;
+}
+
+/* MAIN > DIV(.CONTENEDOR) */
 .contenedor {
 	display: flex;
 	justify-content: center;
 }
 
+/* MAIN > DIV(.CONTENEDOR) > DIV(.REGISTRARUSUARIO) */
 .registrarUsuario {
 	border: 1px solid black;
 	background-color: white;
 	display: inline-block;
 	padding: calc(1vh + 1vw) 0;
-	margin: 0 auto;
+	margin: 0 auto calc(1.5vh + 1.5vw);
 }
 
 .registrarUsuario:hover {
 	background-color: #999;
 }
 
+/* MAIN > DIV(.CONTENEDOR) > DIV(.REGISTRARUSUARIO) > A */
 .registrarUsuario>a {
 	text-decoration: none;
 	font-weight: bold;
 	padding: calc(1vh + 1vw);
 }
+
+/* ------------------------------------ */
+/* --FORM REGISTRO DE USUARIOS NUEVOS-- */
+/* ------------------------------------ */
+
+/* MAIN > FORM(.REGISTROUSUARIO) */
+.registroUsuario {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: calc(1vw + 1vh) auto;
+	border: 2px dashed #084D6E;
+	padding: calc(1.5vh + 1.5vw) 0;
+}
+
+/* MAIN > FORM(.REGISTROUSUARIO) > LABEL */
+.registroUsuario label {
+	display: block;
+	margin: calc(0.5vh + 0.5vw) auto;
+	text-align: center;
+}
+
+/* MAIN > FORM(.REGISTROUSUARIO) > LABEL > INPUT */
+.registroUsuario input{
+	margin: calc(0.5vh + 0.5vw) auto calc(1vh + 1vw);
+	display: block;
+}
+
+/* MAIN > FORM(.REGISTROUSUARIO) > LABEL(FOR="ROL") */
+.registroUsuario label > select {
+	margin-bottom: calc(3vh + 3vw);
+}
+
+/* MAIN > FORM(.REGISTROUSUARIO) > INPUT(.BTNADMIN) */
+.btnAdmin {
+	margin-bottom: calc(1.5vh + 1.5vw);
+}
+
+/* ------------------------------------ */
+/* ------------TABLA PIEZAS------------ */
+/* ------------------------------------ */

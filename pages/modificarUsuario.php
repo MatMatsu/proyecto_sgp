@@ -48,10 +48,10 @@
       */
       if($resultado) {
         $_SESSION["message"] = "Usuario modificado exitosamente";
-        header('Location: /proyecto_sgp/home.php');
+        header('Location: /proyecto_sgp/pages/home.php');
       } else {
         $_SESSION["message"] = "No se pudo modificar al usuario";
-        header('Location: /proyecto_sgp/home.php');
+        header('Location: /proyecto_sgp/pages/home.php');
       }
     } else {
       /**
@@ -62,7 +62,7 @@
        * y redirijo a login
        */
       $_SESSION["message"] = "No se pudo modificar al usuario";
-      header('Location: /proyecto_sgp/home.php');
+      header('Location: /proyecto_sgp/pages/home.php');
     }
   }
 ?>
