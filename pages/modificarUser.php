@@ -2,7 +2,7 @@
 <?php
 	require("conexion.php");
 
-	$query = 'SELECT users.legajo, users.name, users.password, roles.rol FROM users INNER JOIN roles on users.legajo = roles.legajo WHERE users.legajo = ' . $_GET["legajo"];
+	$query = 'SELECT users.legajo, users.name, users.password, roles.rol FROM users INNER JOIN roles on users.legajo = roles.legajo WHERE users.legajo = ' . $_REQUEST["legajo"];
 
 	if($resultado = mysqli_query($conexion, $query)) {
 		$usuario = mysqli_fetch_assoc($resultado);
@@ -13,7 +13,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SGP - Registrar Usuario</title>
+	<title>SGP - Modificar Usuario</title>
 	<link rel="stylesheet" href="../styles/reset.css">
 	<link rel="stylesheet" href="../styles/homeAdmin.css">
 </head>
@@ -22,8 +22,8 @@
 	<main>
 		<h2>Modificar usuario:</h2>
 		<?php if($_SESSION["username"] == "admin") { ?>
-		<form action="modificarUsuario.php" method="post" id="formRegistro" class="registroUsuario col-lg-5 col-md-7 col-sm-9">
-			<label for="legajo" class="col-lg-2 col-md-3 col-sm-7">Legajo<input type="number" max="999" name="legajo" autofocus="true" class="col-lg-2 col-md-3 col-sm-5" value=<?php echo $usuario["legajo"]; ?> ></label>
+		<form method="post" id="formRegistro" class="registroUsuario col-lg-5 col-md-7 col-sm-9" action=<?php echo "'modificarUsuario.php?legajo=" . $usuario["legajo"] . "'"; ?> >
+			<label for="legajo" class="col-lg-2 col-md-3 col-sm-7">Legajo<input type="number" max="999" disabled class="col-lg-2 col-md-3 col-sm-5" value=<?php echo $usuario["legajo"]; ?> ></label>
 			<label for="usuario" class="col-lg-2 col-md-3 col-sm-7">Usuario<input type="text" maxlength="10" name="usuario" class="col-lg-2 col-md-3 col-sm-5" value=<?php echo "'" . $usuario["name"] . "'"; ?> ></label>
 			<label for="password1" class="col-lg-2 col-md-3 col-sm-7">Password<input type="password" maxlength="10" class="col-lg-2 col-md-3 col-sm-5" value=<?php echo "'" . $usuario["password"] . "'"; ?> ></label>
 			<label for="password2" class="col-lg-2 col-md-3 col-sm-7">Repetir Password<input type="password" maxlength="10" name="password" class="col-lg-2 col-md-3 col-sm-5" value=<?php echo "'" . $usuario["password"] . "'"; ?> ></label>

@@ -57,7 +57,7 @@ tbody tr:nth-child(even), thead tr {
 	background-color: white;
 	display: inline-block;
 	padding: calc(1vh + 1vw) 0;
-	margin: 0 auto calc(1.5vh + 1.5vw);
+	margin: 0 auto calc(1vh + 1vw);
 }
 
 .registrarUsuario:hover {
@@ -82,7 +82,7 @@ tbody tr:nth-child(even), thead tr {
 	flex-wrap: wrap;
 	margin: calc(1vw + 1vh) auto;
 	border: 2px dashed #084D6E;
-	padding: calc(1.5vh + 1.5vw) 0;
+	padding: calc(1vh + 1vw) 0;
 }
 
 /* MAIN > FORM(.REGISTROUSUARIO) > LABEL */
@@ -100,7 +100,7 @@ tbody tr:nth-child(even), thead tr {
 
 /* MAIN > FORM(.REGISTROUSUARIO) > LABEL(FOR="ROL") */
 .registroUsuario label > select {
-	margin-bottom: calc(3vh + 3vw);
+	margin-bottom: calc(2vh + 2vw);
 }
 
 /* MAIN > FORM(.REGISTROUSUARIO) > INPUT(.BTNADMIN) */

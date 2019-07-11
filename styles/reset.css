@@ -31,7 +31,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-html {width: 100vw;height: 100vh;}
+/*html {width: 100vw;height: 100vh;}*/
 body {
 	line-height: 1;
 	background-image: url("../img/fondo.png");
@@ -73,8 +73,9 @@ table {
 	.col-sm-9 {width:90vw;}
 	.col-sm-10 {width:100vw;}
 	.salir {top:calc(2vh + 2vw);right:calc(1vh + 1vw);padding: calc(0.5vh + 0.5vw);}
-	.tablaUsuarios th, .tablaUsuarios td {padding:5px;}
+	.tablaUsuarios th, .tablaUsuarios td {padding:2px;}
 	.soloDesktop {display: none;}
+	.btnSoloDesktop {display: none;}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -92,15 +93,16 @@ table {
 	.col-md-9 {width:90vw;}
 	.col-md-10 {width:100vw;}
 	.salir {top:calc(1.5vh + 1.5vw);right:calc(1.5vh + 1.5vw);padding: calc(1vh + 1vw);}
-	.tablaUsuarios th, .tablaUsuarios td {padding:10px;}
+	.tablaUsuarios th, .tablaUsuarios td {padding:5px;}
 	.tablaUsuarios th {font-size: calc(1.75vh + 1.75vw);}
 	.soloDesktop {display: none;}
+	.btnSoloDesktop {display: none;}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 	* {font-size: calc(1vh + 1vw);}
-	h2 { margin-top: calc(1vw + 1vh);	font-size: calc(2.5vw + 2.5vh);	text-align: center;	font-style: italic;}
+	h2 { margin-top: calc(0.5vw + 0.5vh);	font-size: calc(2.5vw + 2.5vh);	text-align: center;	font-style: italic;}
 	.col-lg-1 {width:10vw;}
 	.col-lg-2 {width:20vw;}
 	.col-lg-3 {width:30vw;}
@@ -113,13 +115,14 @@ table {
 	.col-lg-10 {width:100vw;}
 	.salir {top:calc(2vh + 2vw);right:calc(2vh + 2vw);padding: calc(1vh + 1vw);}
 	.soloDesktop {display: table-cell;}
+	.btnSoloDesktop {display: flex; justify-content: center}
 }
 
 /* ------------------------------------ */
 /* ---------------HEADER--------------- */
 /* ------------------------------------ */
 header {
-	padding-top: calc(2vw + 2vh);
+	padding-top: calc(1vw + 1vh);
 }
 h1 {
 	font-size: calc(3.5vw + 3.5vh);

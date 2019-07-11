@@ -42,8 +42,8 @@
     			  <td>" . $pieza["desc_pza"] . "</td>
     			 	<td>". $pieza["med_pza"] . "</td>
     			 	<td>". $pieza["peso_pza"] . "gr.</td>
-    			 	<td class='soloDesktop'><a href='./modificarPza.php?cod_pza=" . $pieza["cod_pza"] . "'>M</a></td>
-    			 	<td class='soloDesktop'><a href='./eliminarPieza.php?cod_pza='" . $pieza["cod_pza"] . "'>X</a></td></tr>";
+    			 	<td class='soloDesktop'><a href='../gerente/modificarPza.php?cod_pza=" . $pieza["cod_pza"] . "'>M</a></td>
+    			 	<td class='soloDesktop'><a href='../gerente/eliminarPieza.php?cod_pza=" . $pieza["cod_pza"] . "'>X</a></td></tr>";
     	}
 		?>
 	</tbody>
@@ -62,7 +62,7 @@
 		}
 	?>
 </div>
-<div class="contenedor">
+<div class="btnSoloDesktop">
 	<div class="registrarUsuario">
 		<a href="../gerente/registrarPza.php">REGISTRAR NUEVA PIEZA</a>
 	</div>

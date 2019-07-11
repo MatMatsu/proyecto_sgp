@@ -21,7 +21,7 @@
     $password = $_REQUEST["password"];
     $rol = $_REQUEST["rol"];
 
-    $query = 'SELECT * FROM users WHERE name LIKE "' . $username . '" LIMIT 1';
+    $query = 'SELECT * FROM users WHERE legajo LIKE "' . $legajo . '" LIMIT 1';
     $resultado = mysqli_query($conexion, $query);
     $usuario = mysqli_fetch_array($resultado);
 
