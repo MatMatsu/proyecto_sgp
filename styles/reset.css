@@ -59,9 +59,8 @@ table {
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (max-width: 680px) {
+@media only screen and (min-width: 100px) {
 	* {font-size: calc(1.3vh + 1.3vw);}
-	h2 { margin-top: calc(1vw + 1vh);	font-size: calc(2vw + 2vh);	text-align: center;	font-style: italic;}
 	.col-sm-1 {width:10vw;}
 	.col-sm-2 {width:20vw;}
 	.col-sm-3 {width:30vw;}
@@ -72,16 +71,18 @@ table {
 	.col-sm-8 {width:80vw;}
 	.col-sm-9 {width:90vw;}
 	.col-sm-10 {width:100vw;}
+	h2 {margin-top: calc(1vw + 1vh);font-size: calc(2vw + 2vh);text-align: center;font-style: italic;}
 	.salir {top:calc(2vh + 2vw);right:calc(1vh + 1vw);padding: calc(0.5vh + 0.5vw);}
-	.tablaUsuarios th, .tablaUsuarios td {padding:2px;}
+	.tablaUsuarios th, .tablaUsuarios td {padding:5px 1px;}
+	.tablaUsuarios th {font-size: calc(1.5vh + 1.5vw);}
+	.tablaUsuarios td {font-size: calc(1.25vh + 1.25vw);}
 	.soloDesktop {display: none;}
 	.btnSoloDesktop {display: none;}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 681px) {
-	* {font-size: calc(1.5vh + 1.5vw);}
-	h2 { margin-top: calc(1vw + 1vh);	font-size: calc(2.5vw + 2.5vh);	text-align: center;	font-style: italic;}
+@media only screen and (min-width: 768px) {
+	* {font-size: calc(1.5vh + 1.5vw);}	
 	.col-md-1 {width:10vw;}
 	.col-md-2 {width:20vw;}
 	.col-md-3 {width:30vw;}
@@ -92,8 +93,9 @@ table {
 	.col-md-8 {width:80vw;}
 	.col-md-9 {width:90vw;}
 	.col-md-10 {width:100vw;}
+	h2 { margin-top: calc(1vw + 1vh);	font-size: calc(2.5vw + 2.5vh);	text-align: center;	font-style: italic;}
 	.salir {top:calc(1.5vh + 1.5vw);right:calc(1.5vh + 1.5vw);padding: calc(1vh + 1vw);}
-	.tablaUsuarios th, .tablaUsuarios td {padding:5px;}
+	.tablaUsuarios th, .tablaUsuarios td {padding:5px 1px;}
 	.tablaUsuarios th {font-size: calc(1.75vh + 1.75vw);}
 	.soloDesktop {display: none;}
 	.btnSoloDesktop {display: none;}
@@ -114,6 +116,9 @@ table {
 	.col-lg-9 {width:90vw;}
 	.col-lg-10 {width:100vw;}
 	.salir {top:calc(2vh + 2vw);right:calc(2vh + 2vw);padding: calc(1vh + 1vw);}
+	.tablaUsuarios th, .tablaUsuarios td {padding:10px 1px;}
+	.tablaUsuarios th {font-size: calc(1.25vh + 1.25vw);}
+	.tablaUsuarios td {font-size: calc(1vh + 1vw);}
 	.soloDesktop {display: table-cell;}
 	.btnSoloDesktop {display: flex; justify-content: center}
 }

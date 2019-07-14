@@ -42,6 +42,8 @@
 				include("./admin.php");
 			} elseif ($_SESSION["username"] == "gerente") {
 				include("../gerente/gerente.php");
+			} elseif ($_SESSION["username"] == "deposito") {
+				include("../deposito/deposito.php");
 			} else {
 			 	echo "<p class='youShallNotPass'>SU USUARIO NO TIENE PERMISO PARA INGRESAR AQUÍ</p>";
 			}

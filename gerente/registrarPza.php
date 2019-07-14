@@ -28,7 +28,7 @@
 			<label for="cod_pza" class="col-lg-2 col-md-3 col-sm-7">Código Pieza<input type="text" maxlength="10" name="cod_pza" autofocus="true" class="col-lg-2 col-md-3 col-sm-5" id="cod_pza" placeholder="0000/00" required="true"></label>
 			<label for="desc_pza" class="col-lg-2 col-md-3 col-sm-7">Descripción<input type="text" maxlength="50" name="desc_pza" class="col-lg-2 col-md-3 col-sm-5" id="desc_pza" placeholder="nombre comercial" required="true"></label>
 			<label for="med_pza" class="col-lg-2 col-md-3 col-sm-7">Medidas<input type="text" maxlength="30" name="med_pza" class="col-lg-2 col-md-3 col-sm-5" id="med_pza" placeholder="medidas de la pieza" required="true"></label>
-			<label for="peso_pza" class="col-lg-2 col-md-3 col-sm-7">Peso de Pieza (gr)<input type="number" max="900000" name="peso_pza" class="col-lg-2 col-md-3 col-sm-5" id="peso_pza" placeholder="000000" required="true"></label>
+			<label for="peso_pza" class="col-lg-2 col-md-3 col-sm-7">Peso de Pieza (gr)<input type="number" min="0" step="any" max="900000" name="peso_pza" class="col-lg-2 col-md-3 col-sm-5" id="peso_pza" placeholder="000000" required="true"></label>
 			<label for="tipo_pza" class="col-lg-5 col-md-7 col-sm-9">Tipo de Pieza
 				<select name="tipo_pza" form="formRegistro">
 					<option value="goma">Goma</option>

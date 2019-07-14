@@ -1,7 +1,7 @@
 <?php
 	define("CANT_REG_PAG", 5);
 
-	$query="SELECT * FROM piezas ORDER BY cod_pza ASC";
+	$query="SELECT stock_pzas.cod_pza, piezas.desc_pza, stock_pzas.cant_stock FROM stock_pzas INNER JOIN piezas ON stock_pzas.cod_pza = piezas.cod_pza WHERE stock_pzas.cant_stock > 0 ORDER BY stock_pzas.cod_pza ASC";
           //print_r($_GET);
 	$pag_actual = (isset($_REQUEST['pag']))? $_REQUEST['pag'] : 1;
 	unset($_REQUEST['pag']);
@@ -17,30 +17,23 @@
 	echo mysqli_error($conexion);	
 ?>
 
-<h2>Todas las piezas:</h2>
+<h2>Todas las piezas en stock:</h2>
 <table class="tablaUsuarios col-sm-9 col-md-9 col-lg-9">
 	<thead>
 		<tr>
-			<th class="col-lg-1">Código</th>
-			<th class="col-lg-1">Tipo</th>
-			<th class="col-lg-3">Descripción</th>
-			<th class="col-lg-1">Medida</th>
-			<th class="col-lg-1">Peso</th>
-			<th class="soloDesktop col-lg-1">Modificar</th>
-			<th class="soloDesktop col-lg-1">Eliminar</th>
+			<th class="">Código</th>
+			<th class="">Descripción</th>
+			<th class="">Cantidad</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
-    	while($pieza = mysqli_fetch_assoc($resultado)){
-  			echo "<tr><td>" . $pieza["cod_pza"] . "</td>
-  					<td>" . $pieza["tipo_pza"] . "</td>
-    			  <td>" . $pieza["desc_pza"] . "</td>
-    			 	<td>". $pieza["med_pza"] . "</td>
-    			 	<td>". number_format($pieza["peso_pza"], 3, ',', '') . "Kg.</td>
-    			 	<td class='soloDesktop'><a href='../gerente/modificarPza.php?cod_pza=" . $pieza["cod_pza"] . "'>M</a></td>
-    			 	<td class='soloDesktop'><a href='../gerente/eliminarPieza.php?cod_pza=" . $pieza["cod_pza"] . "'>X</a></td></tr>";
+    	while($stock = mysqli_fetch_assoc($resultado)){
+  			echo "<tr><td>" . $stock["cod_pza"] . "</td>
+    			  <td>" . $stock["desc_pza"] . "</td>
+    			 	<td>". $stock["cant_stock"] . "</td></tr>";
     	}
+    	print_r($stock);
 		?>
 	</tbody>
 </table>
