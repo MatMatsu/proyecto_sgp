@@ -44,11 +44,11 @@
     // Por las dudas de que haya habido una sesion previa, borramos con unset
     // los datos guardados en la sesion de la comunidad seleccionada previamente
     // Redirijo a home
-    header('Location: /proyecto_sgp/pages/home.php');
+    header('Location: ../pages/home.php');
   } else {
     // Si no coinciden, guardo un mensaje en sesion y redirijo a login
     $_SESSION["message"] = "Usuario o contraseña incorrectos";
 
-    header('Location: /proyecto_sgp/pages/login.php');
+    header('Location: ../pages/login.php');
   }
 ?>

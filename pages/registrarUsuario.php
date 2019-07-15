@@ -8,7 +8,7 @@
   session_start();
 
   if($_SESSION["username"] !== "admin") {
-    header("Location: /proyecto_sgp/index.php");
+    header("Location: ../index.php");
   } else {
 
     /** 
@@ -49,10 +49,10 @@
       */
       if($resultado) {
         $_SESSION["message"] = "Usuario registrado exitosamente";
-        header('Location: /proyecto_sgp/pages/registrarUser.php');
+        header('Location: ../pages/registrarUser.php');
       } else {
         $_SESSION["message"] = "Rol no asignado";
-        header('Location: /proyecto_sgp/pages/registrarUser.php');
+        header('Location: ../pages/registrarUser.php');
       }
     } else {
       /**
@@ -63,7 +63,7 @@
        * y redirijo a login
        */
       $_SESSION["message"] = "Usuario ya existente";
-      header('Location: /proyecto_sgp/pages/registrarUser.php');        
+      header('Location: ../pages/registrarUser.php');        
     }
   }
 

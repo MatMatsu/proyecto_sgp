@@ -47,5 +47,6 @@
 		</div>
 		<?php } ?>
 	</main>
+	<?php include("./scriptJs.php"); ?>
 </body>
 </html>

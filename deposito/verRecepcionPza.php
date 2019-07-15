@@ -1,8 +1,10 @@
 <?php
+	include("../pages/verificarLogueo.php");
+	require("../pages/conexion.php");
 	define("CANT_REG_PAG", 5);
 
-	$query="SELECT stock_pzas.cod_pza, piezas.desc_pza, stock_pzas.cant_stock FROM stock_pzas INNER JOIN piezas ON stock_pzas.cod_pza = piezas.cod_pza WHERE stock_pzas.cant_stock > 0 ORDER BY stock_pzas.cod_pza ASC";
-          //print_r($_GET);
+	$query="SELECT * FROM recepcion_pzas ORDER BY id_recepcion ASC";
+
 	$pag_actual = (isset($_REQUEST['pag']))? $_REQUEST['pag'] : 1;
 	unset($_REQUEST['pag']);
 
@@ -17,21 +19,36 @@
 	echo mysqli_error($conexion);	
 ?>
 
-<h2>Todas las piezas en stock:</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SGP - Registro de Recepcion</title>
+	<link rel="stylesheet" href="../styles/reset.css">
+	<!-- <link rel="stylesheet" href="../styles/signin.css"> -->
+	<link rel="stylesheet" href="../styles/homeAdmin.css">
+</head>
+<body>
+	<?php include("../pages/header.php"); ?>
+<main>
+<h2>Registro de Recepcion de Piezas:</h2>
 <table class="tablaUsuarios col-sm-9 col-md-9 col-lg-9">
 	<thead>
 		<tr>
+			<th>Id Recepcion</th>
 			<th class="">Código</th>
-			<th class="">Descripción</th>
 			<th class="">Cantidad</th>
+			<th>Fecha</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
-    	while($stock = mysqli_fetch_assoc($resultado)){
-  			echo "<tr><td>" . $stock["cod_pza"] . "</td>
-    			  <td>" . $stock["desc_pza"] . "</td>
-    			 	<td>". $stock["cant_stock"] . "</td></tr>";
+    	while($recepcion = mysqli_fetch_assoc($resultado)){
+  			echo "<tr><td>" . $recepcion["id_recepcion"] . "</td>
+    			  <td>" . $recepcion["cod_pza"] . "</td>
+    			 	<td>". $recepcion["cant_recibida"] . "</td>
+    			 	<td>". $recepcion["fecha_recepcion"] . "</td></tr>";
     	}
 		?>
 	</tbody>
@@ -40,7 +57,7 @@
 	<?php
 		for($i = 1; $i <= $cant_pag ; $i++){
 			if ($pag_actual != $i) {
-				echo "<a href='./home.php?pag=" . $i . "'style='margin-left: 5px;'>" . $i . "</a>";
+				echo "<a href='./verRecepcionPza.php?pag=" . $i . "'style='margin-left: 5px;'>" . $i . "</a>";
 			} else {
 				echo $i;
 			}
@@ -52,7 +69,7 @@
 </div>
 <div class="btnVer col-lg-9">
 	<div class="registrarUsuario">
-		<a href="../deposito/verRecepcionPza.php">VER RECEPCIÓN DE PIEZAS</a>
+		<a href="../pages/home.php">VOLVER</a>
 	</div>
 	<div class="registrarUsuario">
 		<a href="../deposito/verDespachoPza.php">VER DESPACHO DE PIEZAS</a>
@@ -72,3 +89,7 @@
 		<a href="../deposito/ingresarPedidoPza.php">INGRESAR PEDIDO DE PIEZAS</a>
 	</div>
 </div>
+</main>
+	<?php include("../pages/scriptJs.php"); ?>
+</body>
+</html>

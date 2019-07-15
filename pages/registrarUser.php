@@ -53,5 +53,6 @@
 			}
 		?>
 	</main>
+	<?php include("./scriptJs.php"); ?>
 </body>
 </html>

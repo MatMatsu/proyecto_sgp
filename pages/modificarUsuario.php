@@ -8,7 +8,7 @@
   session_start();
 
   if($_SESSION["username"] !== "admin") {
-    header("Location: /proyecto_sgp/index.php");
+    header("Location: ../index.php");
   } else {
 
     /** 
@@ -48,10 +48,10 @@
       */
       if($resultado) {
         $_SESSION["message"] = "Usuario modificado exitosamente";
-        header('Location: /proyecto_sgp/pages/home.php');
+        header('Location: ../pages/home.php');
       } else {
         $_SESSION["message"] = "No se pudo modificar al usuario";
-        header('Location: /proyecto_sgp/pages/home.php');
+        header('Location: ../pages/home.php');
       }
     } else {
       /**
@@ -62,7 +62,7 @@
        * y redirijo a login
        */
       $_SESSION["message"] = "No se pudo modificar al usuario";
-      header('Location: /proyecto_sgp/pages/home.php');
+      header('Location: ../pages/home.php');
     }
   }
 ?>

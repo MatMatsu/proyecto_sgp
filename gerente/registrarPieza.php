@@ -6,7 +6,7 @@
   session_start();
 
   if($_SESSION["username"] !== "gerente") {
-    header("Location: /proyecto_sgp/index.php");
+    header("Location: ../index.php");
   } else {
     $cod_pza = $_REQUEST["cod_pza"];
     $desc_pza = $_REQUEST["desc_pza"];
@@ -21,10 +21,10 @@
 
     if ($resultado) {
       $_SESSION["message"] = "Pieza registrada exitosamente";
-      header('Location: /proyecto_sgp/gerente/registrarPza.php');
+      header('Location: ../gerente/registrarPza.php');
     } else {
       $_SESSION["message"] = "Pieza ya existente";
-      header('Location: /proyecto_sgp/gerente/registrarPza.php');        
+      header('Location: ../gerente/registrarPza.php');        
     }
   }
 ?>

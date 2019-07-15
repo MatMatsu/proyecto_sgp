@@ -4,7 +4,7 @@
   session_start();
 
   if($_SESSION["username"] !== "gerente") {
-    header("Location: /proyecto_sgp/index.php");
+    header("Location: ../index.php");
   } else {
 
     $cod_pza = $_REQUEST["cod_pza"];
@@ -14,10 +14,10 @@
     
     if ($resultado) {
       $_SESSION["message"] = "Pieza eliminada exitosamente";
-      header('Location: /proyecto_sgp/pages/home.php');
+      header('Location: ../pages/home.php');
     } else {
       $_SESSION["message"] = "No se pudo eliminar la pieza";
-      header('Location: /proyecto_sgp/pages/home.php');
+      header('Location: ../pages/home.php');
     }
   }
 ?>
